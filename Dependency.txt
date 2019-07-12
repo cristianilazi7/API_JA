@@ -1,0 +1,38 @@
+Express
+npm install express
+
+postgres
+npm install pg
+
+Helmet 
+npm install helmet --save 
+
+jwt-simple
+
+npm install jwt-simple
+
+
+body-parser
+
+npm install body-parser --save
+
+
+express-rate-limit 
+npm install --save express-rate-limit
+
+moment
+npm install moment
+
+apidoc
+npm install apidoc - g
+apidoc -i APIRest/ -o ApiDoc/
+
+cors
+npm install cors
+https://github.com/expressjs/cors
+
+pg-escape
+npm install pg-escape
+
+nodemailer
+npm i nodemailer
