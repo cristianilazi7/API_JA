@@ -35,7 +35,7 @@ UserRoutes.route('/user').get(function (req, res) {
 // Defined edit route
 UserRoutes.route('/user/edit/:id').get(function (req, res) {
   let id = req.params.id;
-  user.findById(id, function (err, users){
+  User.findById(id, function (err, users){
       res.json(users);
   });
 });
@@ -43,7 +43,7 @@ UserRoutes.route('/user/edit/:id').get(function (req, res) {
 //  Defined update route
 UserRoutes.route('/user/update/:id').post(function (req, res) {
 
-  user.findById(req.params.id, function(err, users) {
+  User.findById(req.params.id, function(err, users) {
         console.log("datod:",users)
     if (!users)
     res.json('Could not load Document',err)
@@ -57,10 +57,10 @@ UserRoutes.route('/user/update/:id').post(function (req, res) {
       users.code_contry = req.body.code_contry;
 
       users.save().then(users => {
-          res.json('Update complete');
+        res.status(200).json({'result': 'successfully','status':200});
       })
       .catch(err => {
-            res.status(400).send("unable to update the database");
+        res.status(400).send({'result': 'error','status':400});
       });
     }
   });
@@ -68,9 +68,9 @@ UserRoutes.route('/user/update/:id').post(function (req, res) {
 
 // Defined delete | remove | destroy route
 UserRoutes.route('/user/delete/:id').get(function (req, res) {
-    user.findByIdAndRemove({_id: req.params.id}, function(err, users){
-        if(err) res.json(err);
-        else res.json('Successfully removed');
+  User.findByIdAndRemove({_id: req.params.id}, function(err, users){
+        if(err) res.status(400).send({'result': 'error','status':400});
+        else res.status(200).json({'result': 'successfully','status':200});
     });
 });
 
