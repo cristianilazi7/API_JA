@@ -6,6 +6,7 @@ const UserRoutes = express.Router();
 // Require Business model in our routes module
 let User = require('../models/User');
 
+
 // Defined store route
 UserRoutes.route('/user/add').post(function (req, res) {
     console.log(req.body)
@@ -18,6 +19,8 @@ UserRoutes.route('/user/add').post(function (req, res) {
     res.status(400).send({'result': 'error','status':400});
     });
 });
+
+
 
 // Defined get data(index or listing) route
 UserRoutes.route('/user').get(function (req, res) {

@@ -5,12 +5,15 @@ const express = require('express'),
     mongoose = require('mongoose');
     config = require('./DB');
 
+
     const UserRoute = require('./routes/user.route');
     mongoose.Promise = global.Promise;
     mongoose.connect(config.DB, { useNewUrlParser: true }).then(
       () => {console.log('Database is connected') },
       err => { console.log('Can not connect to the database'+ err)}
     );
+
+    
     
     const app = express();
     app.use(bodyParser.json());
